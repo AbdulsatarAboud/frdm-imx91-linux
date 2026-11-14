@@ -7,8 +7,10 @@ header:
   version: 19
 
 machine: imx91-11x11-lpddr4-frdm
-distro: fsl-imx-wayland             # is NXP’s distro with Wayland.
-target: core-image-minimal
+#distro: fsl-imx-wayland             # is NXP’s distro with Wayland.
+distro: ungwana
+#target: core-image-minimal
+target: ungwana-image
 
 repos:
   frdm-imx91-linux:

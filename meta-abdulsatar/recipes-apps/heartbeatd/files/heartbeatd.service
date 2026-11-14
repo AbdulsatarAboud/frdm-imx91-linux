@@ -1,0 +1,9 @@
+[Unit]
+Description=Heartbeat daemon (training)
+
+[Service]
+ExecStart=/usr/sbin/heartbeatd 10
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
