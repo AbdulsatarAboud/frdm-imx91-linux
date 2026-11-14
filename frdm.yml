@@ -1,0 +1,73 @@
+# Baseline kas file for FRDM i.MX 91 with NXP's meta-imx.
+# Deliberately incomplete: every TODO is part of the lab.
+# Docs: https://kas.readthedocs.io/ (check "Project configuration" for the
+# header version your kas release supports).
+
+header:
+  version: 19
+
+machine: imx91-11x11-lpddr4-frdm
+distro: fsl-imx-wayland             # is NXP’s distro with Wayland.
+target: core-image-minimal
+
+repos:
+  # Split checkout: the combined poky repo has no Wrynose branch.
+  # oe-init-build-env in openembedded-core finds bitbake at ../bitbake,
+  # which is where kas puts a repo named "bitbake".
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    branch: "2.18"
+    layers:
+      .: disabled        # a repo, not a layer (check kas docs if your version wants "excluded")
+
+  openembedded-core:
+    url: https://git.openembedded.org/openembedded-core
+    branch: wrynose
+    layers:
+      meta:
+
+  meta-yocto:
+    url: https://git.yoctoproject.org/meta-yocto
+    branch: wrynose
+    layers:
+      meta-poky:
+
+  meta-freescale:
+    url: https://github.com/Freescale/meta-freescale
+    branch: wrynose
+
+  meta-imx:
+    url: https://github.com/nxp-imx/meta-imx
+    branch: wrynose-6.18.37-2.1.0
+    layers:
+      meta-imx-bsp:
+      meta-imx-sdk:
+      # TODO: which other meta-imx sublayers does imx-setup-release.sh add?
+      #       Add only what core-image-minimal needs, and note why.
+  meta-freescale-distro:
+    url: https://github.com/Freescale/meta-freescale-distro
+    branch: wrynose
+  meta-openembedded:
+    url: https://git.openembedded.org/meta-openembedded
+    branch: wrynose
+    layers:
+      meta-oe:
+      meta-perl:
+      meta-multimedia:
+      meta-python:
+  # TODO: meta-openembedded (meta-oe, meta-python, ...) and others if parsing
+  #       says a layer depends on them. Log each "depends on" error in your notes.
+
+local_conf_header:
+  build-host: |
+    BB_NUMBER_THREADS = "16"
+    PARALLEL_MAKE = "-j 16"
+  eula: |
+    # You accept NXP's EULA by setting this. Read it once.
+    ACCEPT_FSL_EULA = "1"
+  dev: |
+    # Keep work dirs small; remove while debugging a recipe.
+    INHERIT += "rm_work"
+  debug-login: |
+    # DEV ONLY: passwordless root. Never in a product image.
+    EXTRA_IMAGE_FEATURES += "allow-empty-password empty-root-password allow-root-login"
