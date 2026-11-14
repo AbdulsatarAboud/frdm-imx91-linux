@@ -11,6 +11,9 @@ distro: fsl-imx-wayland             # is NXP’s distro with Wayland.
 target: core-image-minimal
 
 repos:
+  frdm-imx91-linux:
+    layers:
+      meta-abdulsatar:
   # Split checkout: the combined poky repo has no Wrynose branch.
   # oe-init-build-env in openembedded-core finds bitbake at ../bitbake,
   # which is where kas puts a repo named "bitbake".
