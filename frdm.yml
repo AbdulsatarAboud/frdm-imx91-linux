@@ -1,5 +1,4 @@
 # Baseline kas file for FRDM i.MX 91 with NXP's meta-imx.
-# Deliberately incomplete: every TODO is part of the lab.
 # Docs: https://kas.readthedocs.io/ (check "Project configuration" for the
 # header version your kas release supports).
 
@@ -38,17 +37,15 @@ repos:
       meta-poky:
 
   meta-freescale:
-    url: https://github.com/Freescale/meta-freescale
-    branch: wrynose
+    url: https://github.com/AbdulsatarAboud/meta-freescale.git
+    branch: imx91-11x11-lpddr4-frdm
 
   meta-imx:
     url: https://github.com/nxp-imx/meta-imx
     branch: wrynose-6.18.37-2.1.0
     layers:
-      meta-imx-bsp:
-      meta-imx-sdk:
-      # TODO: which other meta-imx sublayers does imx-setup-release.sh add?
-      #       Add only what core-image-minimal needs, and note why.
+      meta-imx-bsp: disabled
+      meta-imx-sdk: disabled
   meta-freescale-distro:
     url: https://github.com/Freescale/meta-freescale-distro
     branch: wrynose
