@@ -1,0 +1,28 @@
+From addd490f8ee297258ff7288170994123aae5b79c Mon Sep 17 00:00:00 2001
+From: Abdulsatar Aboud <sataraboud@gmail.com>
+Date: Mon, 9 Nov 2026 19:51:01 +0200
+Subject: [PATCH] Add custom banner
+
+Append the Ungwana product name to the busybox banner so the
+running image is identifiable from `busybox --help`.
+
+Upstream-Status: Inappropriate [product branding]
+
+Signed-off-by: Abdulsatar Aboud <sataraboud@gmail.com>
+---
+ libbb/messages.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libbb/messages.c b/libbb/messages.c
+index 6914d57..1d74b0d 100644
+--- a/libbb/messages.c
++++ b/libbb/messages.c
+@@ -11,7 +11,7 @@
+ #define BB_EXTRA_VERSION " ("AUTOCONF_TIMESTAMP")"
+ #endif
+ 
+-const char bb_banner[] ALIGN1 = "BusyBox v" BB_VER BB_EXTRA_VERSION;
++const char bb_banner[] ALIGN1 = "BusyBox v" BB_VER BB_EXTRA_VERSION "(Ungwana, Abdulsatar)";
+ 
+ 
+ const char bb_msg_memory_exhausted[] ALIGN1 = "out of memory";
