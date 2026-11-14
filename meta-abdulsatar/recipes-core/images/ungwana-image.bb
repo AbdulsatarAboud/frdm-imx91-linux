@@ -3,8 +3,10 @@ LICENSE = "MIT"
 
 inherit core-image
 
-IMAGE_FEATURES += "ssh-server-dropbear"
+IMAGE_INSTALL = "packagegroup-core-boot ${CORE_IMAGE_EXTRA_INSTALL}"
 IMAGE_INSTALL:append = " heartbeatd"
 
-# Allow root login with empty password
-IMAGE_FEATURES += "allow-empty-password allow-root-login"
+IMAGE_FEATURES += "ssh-server-dropbear"
+
+# Development only: NEVER in a product image.
+IMAGE_FEATURES += "empty-root-password allow-empty-password allow-root-login"
