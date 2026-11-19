@@ -1,0 +1,63 @@
+# ---- kas / BitBake output -------------------------------------------
+# Only needed if KAS_WORK_DIR ever points inside the repo.
+# Your setup keeps them in ~/kas-yocto, but this is cheap insurance.
+build/
+tmp/
+tmp-*/
+sstate-cache/
+downloads/
+cache/
+bitbake-cookerdaemon.log
+bitbake.lock
+bitbake.sock
+pseudodone
+
+# Repos kas clones next to the YAML (never commit other people's layers)
+bitbake/
+openembedded-core/
+meta-yocto/
+meta-freescale/
+meta-freescale-distro/
+meta-imx/
+meta-openembedded/
+
+# devtool workspace (lives under build/, but in case it's moved)
+workspace/
+
+# ---- Images and boot binaries ---------------------------------------
+*.wic
+*.wic.gz
+*.wic.zst
+*.wic.bmap
+*.sdcard
+*.ext4
+*.tar.zst
+flash.bin
+imx-boot*
+*.scr
+!**/files/*.cmd
+
+# ---- Module 2 hand build (lab 2.2) ----------------------------------
+handbuild/
+
+# ---- Python / tools -------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+
+# ---- Editors and OS -------------------------------------------------
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.orig
+*.rej
+
+# ---- Never commit secrets (RAUC keys arrive in Module 4) ------------
+*.key
+*.pem
+!**/ca.cert.pem
+.env
