@@ -9,7 +9,7 @@ overrides:
     meta-yocto:
       commit: b60511544c41f5d29d290681e15c9e302f747efe
     meta-freescale:
-      commit: 0f3845c70d3a5a34e4d70b4acfdb79e2e8e6a625
+      commit: 4356fa7c670e5542c49cbe78a3d28c0b06c568be
     meta-imx:
       commit: 2eb758f42cfb96042344815b7dd7755b06ba1e3b
     meta-freescale-distro:
